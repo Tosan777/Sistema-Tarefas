@@ -1,0 +1,22 @@
+<h1>Lista de Tarefas</h1>
+
+{% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+<a href="/nova/">Nova Tarefa</a>
+
+<ul>
+    {% for tarefa in tarefas %}
+        <li>
+            {{ tarefa.titulo }} - {{ tarefa.descricao }}
+            Categoria: {{ tarefa.categoria.nome|default:"Sem categoria" }}
+            <a href="/editar/{{ tarefa.id }}/">Editar</a>
+            <a href="/deletar/{{ tarefa.id }}/">Deletar</a>
+        </li>
+    {% empty %}
+        <li>Nenhuma tarefa cadastrada</li>
+    {% endfor %}
+</ul>
