@@ -1,22 +1,57 @@
-<h1>Lista de Tarefas</h1>
+{% extends 'base.html' %}
 
-{% if messages %}
-    {% for message in messages %}
-        <p>{{ message }}</p>
-    {% endfor %}
-{% endif %}
+{% block titulo %}Lista de Tarefas{% endblock %}
 
-<a href="/nova/">Nova Tarefa</a>
+{% block conteudo %}
+<a href="/nova/" class="btn btn-verde">+ Nova Tarefa</a>
 
-<ul>
+<hr style="margin: 15px 0;">
+
+{% if tarefas %}
     {% for tarefa in tarefas %}
-        <li>
-            {{ tarefa.titulo }} - {{ tarefa.descricao }}
-            Categoria: {{ tarefa.categoria.nome|default:"Sem categoria" }}
-            <a href="/editar/{{ tarefa.id }}/">Editar</a>
-            <a href="/deletar/{{ tarefa.id }}/">Deletar</a>
-        </li>
-    {% empty %}
-        <li>Nenhuma tarefa cadastrada</li>
+        <div class="tarefa tarefa-{{ tarefa.status }}">
+            <div class="tarefa-status">
+                {% if tarefa.status == 'completa' %}
+                    ✓ Completa
+                {% elif tarefa.status == 'cancelada' %}
+                    Cancelada
+                {% elif tarefa.status == 'perdida' %}
+                    ✗ Perdida
+                {% else %}
+                    ⊙ Ativa
+                {% endif %}
+            </div>
+
+            <div class="tarefa-titulo">{{ tarefa.titulo }}</div>
+            <div class="tarefa-categoria">Categoria: {{ tarefa.categoria.nome|default:"Sem categoria" }}</div>
+            <div class="tarefa-descricao">{{ tarefa.descricao }}</div>
+
+            <div class="tarefa-botoes">
+                {% if tarefa.status != 'completa' %}
+                    <a href="/status/{{ tarefa.id }}/completa/" class="btn btn-verde">✓ Completa</a>
+                {% endif %}
+
+                {% if tarefa.status != 'cancelada' %}
+                    <a href="/status/{{ tarefa.id }}/cancelada/" class="btn">Cancelada</a>
+                {% endif %}
+
+                {% if tarefa.status != 'perdida' %}
+                    <a href="/status/{{ tarefa.id }}/perdida/" class="btn btn-vermelho">✗ Perdida</a>
+                {% endif %}
+
+                {% if tarefa.status != 'ativa' %}
+                    <a href="/status/{{ tarefa.id }}/ativa/" class="btn">Ativa</a>
+                {% endif %}
+
+                <a href="/editar/{{ tarefa.id }}/" class="btn">Editar</a>
+                <a href="/deletar/{{ tarefa.id }}/" class="btn btn-vermelho" onclick="return confirm('Deletar mesmo?');">Deletar</a>
+            </div>
+        </div>
     {% endfor %}
-</ul>
+{% else %}
+    <div class="vazio">
+        <p>Nenhuma tarefa cadastrada</p>
+        <a href="/nova/" class="btn btn-verde">Criar primeira tarefa</a>
+    </div>
+{% endif %}
+{% endblock %}

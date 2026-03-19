@@ -114,3 +114,21 @@ def deletar_tarefa(request, id):
     except Exception as e:
         messages.error(request, f'Erro ao deletar tarefa: {str(e)}')
         return redirect('lista')
+
+
+def atualizar_status(request, id, novo_status):
+    try:
+        tarefa = Tarefa.objects.get(id=id)
+        if novo_status in ['ativa', 'completa', 'cancelada', 'perdida']:
+            tarefa.status = novo_status
+            tarefa.save()
+            messages.success(request, 'Status atualizado!')
+        else:
+            messages.error(request, 'Status inválido!')
+        return redirect('lista')
+    except ObjectDoesNotExist:
+        messages.error(request, 'Tarefa não encontrada!')
+        return redirect('lista')
+    except Exception as e:
+        messages.error(request, f'Erro ao atualizar status: {str(e)}')
+        return redirect('lista')
