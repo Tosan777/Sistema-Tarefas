@@ -67,9 +67,9 @@ projeto/
 
  Capturas de tela
 
-![Lista de tarefas](lista.png)
-![Criar nova tarefa](nova.png)
-![Editar tarefa](editar.png)
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
 ---
 
 Desenvolvido como projeto final de aprendizado de Python e Django.
