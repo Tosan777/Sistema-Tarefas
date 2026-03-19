@@ -1,25 +1,25 @@
-# Sistema de Gerenciamento de Tarefas
+ Sistema de Gerenciamento de Tarefas
 
 Um sistema simples para organizar e gerenciar suas tarefas do dia a dia.
 
-## O que é?
+ O que é?
 
 É um aplicativo web que permite criar, editar, deletar e organizar tarefas por categorias. Você pode adicionar um título, uma descrição e escolher em qual categoria a tarefa pertence.
 
-## O que você precisa?
+ O que você precisa:
 
 - Python 3.x
 - Django 6.0
 - Um navegador web (Chrome, Firefox, Edge, etc)
 
-## Como usar?
+ Uso
 
 1. Abra o terminal na pasta do projeto
 2. Execute o comando para iniciar o servidor: python manage.py runserver
 3. Acesse no navegador em http://127.0.0.1:8000/
 4. Pronto! Você já pode criar e gerenciar suas tarefas
 
-## Funcionalidades
+ Funcionamento
 
 - **Listar tarefas**: Ver todas as tarefas cadastradas na tela principal
 - **Criar tarefa**: Adicionar uma nova tarefa com título, descrição e categoria
@@ -27,7 +27,7 @@ Um sistema simples para organizar e gerenciar suas tarefas do dia a dia.
 - **Deletar tarefa**: Remover uma tarefa que não precisa mais
 - **Categorizar**: Organizar tarefas por categorias
 
-## Como funciona?
+ Como funciona?
 
 O sistema tem duas tabelas principais:
 
@@ -37,7 +37,7 @@ O sistema tem duas tabelas principais:
 
 Cada tarefa deve ter uma categoria. Se não quiser selecionar nenhuma, a tarefa fica sem categoria.
 
-## Validação de dados
+ Validação de dados
 
 O sistema verifica se:
 - O título da tarefa não está vazio
@@ -46,11 +46,11 @@ O sistema verifica se:
 
 Se algo estiver faltando, o sistema mostra uma mensagem de erro.
 
-## Tratamento de erros
+ Tratamento de erros
 
 Se algo der errado durante a operação, o sistema mostra uma mensagem clara do que aconteceu, sem travar a aplicação.
 
-## Estrutura da pasta
+ Estrutura da pasta
 
 ```
 projeto/
@@ -65,7 +65,7 @@ projeto/
     └── templates/ (páginas HTML)
 ```
 
-## Capturas de tela
+ Capturas de tela
 
 ![alt text](image.png)
 ![alt text](image-1.png)
